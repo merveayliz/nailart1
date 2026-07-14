@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nail Art Studio | Kusursuz Tırnak Tasarımları</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icon Set -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Elegant Serif & Sans-serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Custom Configuration for Elegant Blue, Purple & Cream -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#8CA5C1',       // Dingin ve asil soft mavi
+                            purple: '#8A7EA4',     // Premium lavanta/mor tonu
+                            cream: '#FAF8F5',      // Lüks ipeksi krem (Arka plan)
+                            dark: '#1C1D21',       // Obsidian koyu şıklık (Yazı ve koyu alanlar)
+                            accent: '#5D4F73'      // Derin mor (Butonlar ve kontrast vurgular)
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Akıcı ve lüks geçiş efektleri */
+        .premium-transition {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        /* Akıcı scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8A7EA4;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-dark font-sans antialiased overflow-x-hidden">
+
+    <!-- 1. EN ÜST KISIM: ZARİF DUYURU BANNER'I -->
+    <div class="bg-brand-purple text-white py-2 px-4 text-center text-xs md:text-sm font-medium tracking-widest uppercase">
+        <span class="opacity-90">YAZ KAMPANYASI: Tüm İşlemlerde İlk Randevuya Özel %15 İndirim!</span>
+    </div>
+
+    <!-- 2. NAVİGASYON BAR (STICKY & PREMİUM) -->
+    <nav class="sticky top-0 z-50 bg-[#FAF8F5]/80 backdrop-blur-md border-b border-stone-200/40 shadow-sm premium-transition">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2">
+                    <span class="font-serif text-2xl md:text-3xl tracking-widest text-brand-dark font-bold">
+                        NAIL<span class="text-brand-purple font-light italic">Art</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8 font-medium text-xs tracking-widest uppercase text-brand-dark/80">
+                    <a href="#" class="hover:text-brand-purple premium-transition">Ana Sayfa</a>
+                    <a href="#hizmetler" class="hover:text-brand-purple premium-transition">Hizmetler</a>
+                    <a href="#galeri" class="hover:text-brand-purple premium-transition">Galeri</a>
+                    <a href="#sss" class="hover:text-brand-purple premium-transition">S.S.S</a>
+                    <a href="#iletisim" class="hover:text-brand-purple premium-transition">İletişim</a>
+                    <a href="#randevu" class="bg-brand-accent text-white px-6 py-3 rounded-none text-xs font-bold uppercase tracking-widest hover:bg-brand-dark premium-transition shadow-sm">Randevu Al</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-brand-dark focus:outline-none p-2" aria-label="Menüyü Aç">
+                        <i id="menu-icon" class="fa-solid fa-bars-staggered text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-cream border-b border-stone-200 absolute w-full left-0 premium-transition">
+            <div class="px-4 pt-2 pb-6 space-y-4 text-center font-medium shadow-xl">
+                <a href="#" class="block py-2 text-brand-dark hover:text-brand-purple premium-transition">Ana Sayfa</a>
+                <a href="#hizmetler" class="block py-2 text-brand-dark hover:text-brand-purple premium-transition">Hizmetler</a>
+                <a href="#galeri" class="block py-2 text-brand-dark hover:text-brand-purple premium-transition">Galeri</a>
+                <a href="#sss" class="block py-2 text-brand-dark hover:text-brand-purple premium-transition">S.S.S</a>
+                <a href="#iletisim" class="block py-2 text-brand-dark hover:text-brand-purple premium-transition">İletişim</a>
+                <a href="#randevu" class="inline-block w-full bg-brand-accent text-white py-3 rounded-none text-xs font-bold uppercase tracking-widest">Randevu Al</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3. HERO (GİRİŞ) BÖLÜMÜ -->
+    <header class="relative bg-gradient-to-br from-white via-brand-cream to-[#ECEFF3] py-20 md:py-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Info -->
+            <div class="lg:col-span-6 space-y-8 text-center lg:text-left">
+                <span class="inline-block bg-brand-blue/20 text-brand-accent px-4 py-1.5 rounded-none text-xs font-bold uppercase tracking-widest">
+                    Zarif & Minimalist Dokunuşlar
+                </span>
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-brand-dark leading-tight">
+                    Sanatın En <span class="italic text-brand-purple font-light">Zarif</span> Hali Parmak Uçlarınızda
+                </h1>
+                <p class="text-stone-600 text-sm sm:text-base max-w-lg mx-auto lg:mx-0 leading-relaxed font-light">
+                    Sıradanlıktan uzak, tamamen kişiliğinizi yansıtan yüksek kaliteli tırnak tasarımları. Kendinize lüks ve kusursuz bir mola verin.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#randevu" class="bg-brand-dark text-white px-8 py-4 rounded-none text-xs font-bold uppercase tracking-widest hover:bg-brand-purple premium-transition shadow-lg text-center">
+                        Online Rezervasyon
+                    </a>
+                    <a href="#galeri" class="border border-brand-dark/20 text-brand-dark px-8 py-4 rounded-none text-xs font-bold uppercase tracking-widest hover:bg-brand-dark hover:text-white premium-transition text-center">
+                        Koleksiyonu İncele
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Visual Highlight -->
+            <div class="lg:col-span-6 relative flex justify-center">
+                <!-- Mor/Mavi Yumuşak Arka Plan Işıltıları (Göz yormayan, sabit) -->
+                <div class="absolute -top-12 -left-12 w-96 h-96 bg-brand-blue/20 rounded-full filter blur-[100px] -z-10"></div>
+                <div class="absolute -bottom-12 -right-12 w-96 h-96 bg-brand-purple/15 rounded-full filter blur-[100px] -z-10"></div>
+                
+                <!-- Ana Görsel Kartı (Keskin hatlı modern tasarım) -->
+                <div class="relative w-full max-w-md bg-white p-3 rounded-none shadow-xl border border-stone-100 transition-transform duration-700 hover:scale-[1.01]">
+                    <img src="img/1.jpg" alt="Salon Tasarımı" class="w-full h-[450px] object-cover filter contrast-[1.02]">
+                    <div class="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-md p-5 rounded-none border border-stone-200/50 flex items-center justify-between">
+                        <div>
+                            <p class="text-[10px] text-brand-purple font-bold tracking-widest uppercase">Luxe Nail Art Studio</p>
+                            <h3 class="font-serif text-lg text-brand-dark font-normal mt-1">Eşsiz Bir Deneyim</h3>
+                        </div>
+                        <span class="text-brand-purple"><i class="fa-solid fa-chevron-right text-sm"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 4. FİYAT LİSTESİ / HİZMETLER -->
+    <section id="hizmetler" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                <span class="text-brand-purple text-xs font-bold tracking-widest uppercase block">Hizmet Menümüz</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-brand-dark">Kişiselleştirilmiş Bakım Deneyimi</h2>
+                <div class="w-12 h-[1px] bg-brand-purple mx-auto"></div>
+                <p class="text-stone-500 text-sm font-light">Tüm işlemlerimizde tek kullanımlık steril araçlar ve en yüksek kalitede premium ürünler tercih edilmektedir.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Kartlar (Köşeli, sade ve inanılmaz profesyonel) -->
+                <!-- Kart 1 -->
+                <div class="bg-brand-cream p-8 rounded-none border border-stone-200/50 hover:border-brand-blue/50 hover:-translate-y-1 premium-transition flex flex-col justify-between shadow-sm hover:shadow-md">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-blue/10 flex items-center justify-center text-brand-purple text-lg mb-6">
+                            <i class="fa-solid fa-hand-sparkles"></i>
+                        </div>
+                        <h3 class="font-serif text-xl text-brand-dark font-normal mb-2">Medikal Manikür</h3>
+                        <p class="text-stone-500 text-sm leading-relaxed mb-6 font-light">Tırnak etlerinin derinlemesine temizlenmesi, törpüleme, peeling ve özel nemlendirici masaj uygulaması.</p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-200/40 pt-4 mt-auto">
+                        <span class="font-serif text-xl font-bold text-brand-dark">₺350</span>
+                        <span class="text-[10px] text-brand-purple font-bold tracking-wider uppercase">Süre: 45 Dk</span>
+                    </div>
+                </div>
+
+                <!-- Kart 2 -->
+                <div class="bg-brand-cream p-8 rounded-none border border-stone-200/50 hover:border-brand-blue/50 hover:-translate-y-1 premium-transition flex flex-col justify-between shadow-sm hover:shadow-md">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-blue/10 flex items-center justify-center text-brand-purple text-lg mb-6">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <h3 class="font-serif text-xl text-brand-dark font-normal mb-2">Kalıcı Oje</h3>
+                        <p class="text-stone-500 text-sm leading-relaxed mb-6 font-light">3-4 hafta boyunca parlaklığını koruyan, dökülmeyen ve tırnağı koruyan yüksek kaliteli formüller.</p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-200/40 pt-4 mt-auto">
+                        <span class="font-serif text-xl font-bold text-brand-dark">₺450</span>
+                        <span class="text-[10px] text-brand-purple font-bold tracking-wider uppercase">Süre: 60 Dk</span>
+                    </div>
+                </div>
+
+                <!-- Kart 3 -->
+                <div class="bg-brand-cream p-8 rounded-none border border-stone-200/50 hover:border-brand-blue/50 hover:-translate-y-1 premium-transition flex flex-col justify-between shadow-sm hover:shadow-md">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-blue/10 flex items-center justify-center text-brand-purple text-lg mb-6">
+                            <i class="fa-solid fa-paintbrush"></i>
+                        </div>
+                        <h3 class="font-serif text-xl text-brand-dark font-normal mb-2">Sanatsal Nail Art</h3>
+                        <p class="text-stone-500 text-sm leading-relaxed mb-6 font-light">Hayal ettiğiniz minimal çizgiler, geometrik desenler veya el işçiliği 3D figürlerin tırnaklarınıza resmedilmesi.</p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-200/40 pt-4 mt-auto">
+                        <span class="font-serif text-xl font-bold text-brand-dark">₺150<span class="text-xs font-light text-stone-500"> / Tek</span></span>
+                        <span class="text-[10px] text-brand-purple font-bold tracking-wider uppercase">Süre: Değişken</span>
+                    </div>
+                </div>
+
+                <!-- Kart 4 -->
+                <div class="bg-brand-cream p-8 rounded-none border border-stone-200/50 hover:border-brand-blue/50 hover:-translate-y-1 premium-transition flex flex-col justify-between shadow-sm hover:shadow-md">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-blue/10 flex items-center justify-center text-brand-purple text-lg mb-6">
+                            <i class="fa-solid fa-gem"></i>
+                        </div>
+                        <h3 class="font-serif text-xl text-brand-dark font-normal mb-2">Protez Tırnak (Jel)</h3>
+                        <p class="text-stone-500 text-sm leading-relaxed mb-6 font-light">Doğal duruşlu, sağlam ve tırnağa nefes aldıran ultra esnek jel protez tırnak uygulaması.</p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-200/40 pt-4 mt-auto">
+                        <span class="font-serif text-xl font-bold text-brand-dark">₺850</span>
+                        <span class="text-[10px] text-brand-purple font-bold tracking-wider uppercase">Süre: 90 Dk</span>
+                    </div>
+                </div>
+
+                <!-- Kart 5 -->
+                <div class="bg-brand-cream p-8 rounded-none border border-stone-200/50 hover:border-brand-blue/50 hover:-translate-y-1 premium-transition flex flex-col justify-between shadow-sm hover:shadow-md">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-blue/10 flex items-center justify-center text-brand-purple text-lg mb-6">
+                            <i class="fa-solid fa-scissors"></i>
+                        </div>
+                        <h3 class="font-serif text-xl text-brand-dark font-normal mb-2">Çıkarma & Güçlendirme</h3>
+                        <p class="text-stone-500 text-sm leading-relaxed mb-6 font-light">Eski kalıcı ojelerin tırnağı yıpratmadan sökülmesi ve vitamin kürleri ile yoğun tırnak bakımı.</p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-200/40 pt-4 mt-auto">
+                        <span class="font-serif text-xl font-bold text-brand-dark">₺200</span>
+                        <span class="text-[10px] text-brand-purple font-bold tracking-wider uppercase">Süre: 30 Dk</span>
+                    </div>
+                </div>
+
+                <!-- Kart 6 -->
+                <div class="bg-brand-cream p-8 rounded-none border border-stone-200/50 hover:border-brand-blue/50 hover:-translate-y-1 premium-transition flex flex-col justify-between shadow-sm hover:shadow-md">
+                    <div>
+                        <div class="w-12 h-12 bg-brand-blue/10 flex items-center justify-center text-brand-purple text-lg mb-6">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <h3 class="font-serif text-xl text-brand-dark font-normal mb-2">Gelin / VIP Paket</h3>
+                        <p class="text-stone-500 text-sm leading-relaxed mb-6 font-light">Düğün veya özel günleriniz için simli ombreler ve inci detaylarla bezenmiş özel bakım konsepti.</p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stone-200/40 pt-4 mt-auto">
+                        <span class="font-serif text-xl font-bold text-brand-dark">₺1.200</span>
+                        <span class="text-[10px] text-brand-purple font-bold tracking-wider uppercase">Süre: 120 Dk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. GALERİ BÖLÜMÜ -->
+    <section id="galeri" class="py-24 bg-brand-cream border-t border-stone-200/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                <span class="text-brand-purple text-xs font-bold tracking-widest uppercase block">Sanat Galerimiz</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-brand-dark">Özenle Tasarlanmış Koleksiyonlar</h2>
+                <div class="w-12 h-[1px] bg-brand-purple mx-auto"></div>
+                <p class="text-stone-500 text-sm font-light">Üzerlerine tıklayarak tasarımlarımızı detaylıca inceleyebilir ve slayt şeklinde gezinebilirsiniz.</p>
+            </div>
+
+            <!-- Grid Layout -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Sadece 1.jpg salon içi tasarım, diğerleri tırnak sanatı -->
+                <div onclick="openGalleryModal(0)" class="group relative overflow-hidden rounded-none shadow-sm cursor-pointer aspect-[3/4]">
+                    <img src="img/16.jpg" alt="Premium Stüdyomuz" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 premium-transition flex flex-col justify-end p-6">
+                        <p class="text-white font-serif text-lg">Premium Stüdyo</p>
+                        <span class="text-brand-blue text-xs uppercase tracking-widest mt-1">Görüntüle</span>
+                    </div>
+                </div>
+                
+                <div onclick="openGalleryModal(1)" class="group relative overflow-hidden rounded-none shadow-sm cursor-pointer aspect-[3/4]">
+                    <img src="img/2.jpg" alt="Rose & Gold Tasarım" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 premium-transition flex flex-col justify-end p-6">
+                        <p class="text-white font-serif text-lg">Rose & Gold Sanatı</p>
+                        <span class="text-brand-blue text-xs uppercase tracking-widest mt-1">Görüntüle</span>
+                    </div>
+                </div>
+
+                <div onclick="openGalleryModal(2)" class="group relative overflow-hidden rounded-none shadow-sm cursor-pointer aspect-[3/4]">
+                    <img src="img/3.jpg" alt="Çilek Desenli Tırnak" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 premium-transition flex flex-col justify-end p-6">
+                        <p class="text-white font-serif text-lg">Çilek Bahçesi</p>
+                        <span class="text-brand-blue text-xs uppercase tracking-widest mt-1">Görüntüle</span>
+                    </div>
+                </div>
+
+                <div onclick="openGalleryModal(3)" class="group relative overflow-hidden rounded-none shadow-sm cursor-pointer aspect-[3/4]">
+                    <img src="img/4.jpg" alt="Lotus Çiçeği Tırnak" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 premium-transition flex flex-col justify-end p-6">
+                        <p class="text-white font-serif text-lg">Altın Lotus Çiçeği</p>
+                        <span class="text-brand-blue text-xs uppercase tracking-widest mt-1">Görüntüle</span>
+                    </div>
+                </div>
+
+                <div onclick="openGalleryModal(4)" class="group relative overflow-hidden rounded-none shadow-sm cursor-pointer aspect-[3/4]">
+                    <img src="img/5.jpg" alt="Koi Balığı Sanatı Pembe" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 premium-transition flex flex-col justify-end p-6">
+                        <p class="text-white font-serif text-lg">Koi Havuzu (Pembe)</p>
+                        <span class="text-brand-blue text-xs uppercase tracking-widest mt-1">Görüntüle</span>
+                    </div>
+                </div>
+
+                <div onclick="openGalleryModal(5)" class="group relative overflow-hidden rounded-none shadow-sm cursor-pointer aspect-[3/4]">
+                    <img src="img/6.jpg" alt="Mavi Jel Koi Balığı" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 premium-transition flex flex-col justify-end p-6">
+                        <p class="text-white font-serif text-lg">3D Su Damlaları & Mavi</p>
+                        <span class="text-brand-blue text-xs uppercase tracking-widest mt-1">Görüntüle</span>
+                    </div>
+                </div>
+
+                <div onclick="openGalleryModal(6)" class="group relative overflow-hidden rounded-none shadow-sm cursor-pointer aspect-[3/4]">
+                    <img src="img/15.jpg" alt="Okyanus Esintisi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 premium-transition flex flex-col justify-end p-6">
+                        <p class="text-white font-serif text-lg">Okyanus Esintisi</p>
+                        <span class="text-brand-blue text-xs uppercase tracking-widest mt-1">Görüntüle</span>
+                    </div>
+                </div>
+
+                <div onclick="openGalleryModal(7)" class="group relative overflow-hidden rounded-none shadow-sm cursor-pointer aspect-[3/4]">
+                    <img src="img/8.jpg" alt="Gotik Sakura" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 premium-transition flex flex-col justify-end p-6">
+                        <p class="text-white font-serif text-lg">Gotik Sakura</p>
+                        <span class="text-brand-blue text-xs uppercase tracking-widest mt-1">Görüntüle</span>
+                    </div>
+                </div>
+
+                <div onclick="openGalleryModal(8)" class="group relative overflow-hidden rounded-none shadow-sm cursor-pointer aspect-[3/4]">
+                    <img src="img/9.jpg" alt="Gotik Sakura" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 premium-transition flex flex-col justify-end p-6">
+                        <p class="text-white font-serif text-lg">Gotik Sakura</p>
+                        <span class="text-brand-blue text-xs uppercase tracking-widest mt-1">Görüntüle</span>
+                    </div>
+                </div>
+
+                <div onclick="openGalleryModal(9)" class="group relative overflow-hidden rounded-none shadow-sm cursor-pointer aspect-[3/4]">
+                    <img src="img/10.jpg" alt="Gotik Sakura" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 premium-transition flex flex-col justify-end p-6">
+                        <p class="text-white font-serif text-lg">Gotik Sakura</p>
+                        <span class="text-brand-blue text-xs uppercase tracking-widest mt-1">Görüntüle</span>
+                    </div>
+                </div>
+
+                <div onclick="openGalleryModal(10)" class="group relative overflow-hidden rounded-none shadow-sm cursor-pointer aspect-[3/4]">
+                    <img src="img/11.jpg" alt="Gotik Sakura" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 premium-transition flex flex-col justify-end p-6">
+                        <p class="text-white font-serif text-lg">Gotik Sakura</p>
+                        <span class="text-brand-blue text-xs uppercase tracking-widest mt-1">Görüntüle</span>
+                    </div>
+                </div>
+
+                <div onclick="openGalleryModal(11)" class="group relative overflow-hidden rounded-none shadow-sm cursor-pointer aspect-[3/4]">
+                    <img src="img/12.jpg" alt="Gotik Sakura" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 premium-transition flex flex-col justify-end p-6">
+                        <p class="text-white font-serif text-lg">Gotik Sakura</p>
+                        <span class="text-brand-blue text-xs uppercase tracking-widest mt-1">Görüntüle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. RANDEVU FORMU -->
+    <section id="randevu" class="py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-brand-cream rounded-none shadow-xl p-8 sm:p-14 border border-stone-200/50">
+                <div class="text-center max-w-lg mx-auto mb-12 space-y-3">
+                    <span class="text-brand-purple text-xs font-bold uppercase tracking-widest block">Güzellik Sırası Sizde</span>
+                    <h2 class="font-serif text-3xl text-brand-dark">Çevrimiçi Randevu Talebi</h2>
+                    <p class="text-stone-500 text-sm font-light">Tarih ve saat tercihinizi belirtin, ekibimiz müsaitlik durumunu onaylamak için hemen dönüş sağlasın.</p>
+                </div>
+
+                <form id="appointment-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Ad Soyad -->
+                        <div>
+                            <label class="block text-brand-dark text-xs font-semibold uppercase tracking-wider mb-2">Adınız Soyadınız</label>
+                            <input type="text" required class="w-full bg-white border border-stone-200 rounded-none px-4 py-3.5 focus:outline-none focus:border-brand-purple transition-colors font-light text-sm" placeholder="Ayliz Azaklı">
+                        </div>
+                        <!-- Telefon -->
+                        <div>
+                            <label class="block text-brand-dark text-xs font-semibold uppercase tracking-wider mb-2">Telefon Numaranız</label>
+                            <input type="tel" required class="w-full bg-white border border-stone-200 rounded-none px-4 py-3.5 focus:outline-none focus:border-brand-purple transition-colors font-light text-sm" placeholder="0555 123 45 67">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- İşlem Seçimi -->
+                        <div>
+                            <label class="block text-brand-dark text-xs font-semibold uppercase tracking-wider mb-2">Yapılacak İşlem</label>
+                            <select required class="w-full bg-white border border-stone-200 rounded-none px-4 py-3.5 focus:outline-none focus:border-brand-purple transition-colors font-light text-sm">
+                                <option value="" disabled selected>İşlem Seçiniz</option>
+                                <option value="manikur">Medikal Manikür</option>
+                                <option value="kalici-oje">Kalıcı Oje</option>
+                                <option value="protez">Protez Tırnak</option>
+                                <option value="nailart">Sanatsal Nail Art</option>
+                                <option value="cikar-bakim">Tırnak Çıkarma & Güçlendirme</option>
+                                <option value="vip">Özel VIP / Gelin Kombini</option>
+                            </select>
+                        </div>
+                        <!-- Tarih & Saat Seçimi -->
+                        <div>
+                            <label class="block text-brand-dark text-xs font-semibold uppercase tracking-wider mb-2">Randevu Tarihi</label>
+                            <input type="datetime-local" required class="w-full bg-white border border-stone-200 rounded-none px-4 py-3.5 focus:outline-none focus:border-brand-purple transition-colors font-light text-sm">
+                        </div>
+                    </div>
+
+                    <!-- Özel Not -->
+                    <div>
+                        <label class="block text-brand-dark text-xs font-semibold uppercase tracking-wider mb-2">Varsa Eklemek İstediğiniz Detaylar</label>
+                        <textarea class="w-full bg-white border border-stone-200 rounded-none px-4 py-3.5 focus:outline-none focus:border-brand-purple transition-colors h-28 resize-none font-light text-sm" placeholder="Uygulanmasını istediğiniz özel bir tasarım fikri varsa lütfen buraya not edin..."></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-brand-dark text-white py-4 rounded-none text-xs font-bold uppercase tracking-widest hover:bg-brand-purple premium-transition shadow-md hover:shadow-lg flex items-center justify-center space-x-2">
+                        <span>Randevu Talebini Gönder</span> <i class="fa-solid fa-paper-plane text-[10px]"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. SIKÇA SORULAN SORULAR (SSS) -->
+    <section id="sss" class="py-24 bg-brand-cream border-t border-stone-200/30">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                <span class="text-brand-purple text-xs font-bold tracking-widest uppercase block">Sıkça Sorulan Sorular</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-brand-dark">Merak Edilenler</h2>
+                <div class="w-12 h-[1px] bg-brand-purple mx-auto"></div>
+            </div>
+
+            <!-- Accordion List -->
+            <div class="space-y-4">
+                <!-- Soru 1 -->
+                <div class="bg-white rounded-none border border-stone-200/60 overflow-hidden premium-transition">
+                    <button onclick="toggleFaq(1)" class="w-full text-left px-8 py-5 flex items-center justify-between text-brand-dark font-medium text-sm sm:text-base focus:outline-none">
+                        <span>Nail Art ne kadar süre dayanır?</span>
+                        <i id="faq-icon-1" class="fa-solid fa-plus text-brand-purple transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-1" class="hidden px-8 pb-5 text-stone-500 text-sm leading-relaxed border-t border-stone-100 pt-4 font-light">
+                        Doğru bir tırnak altyapısı ve kalıcı oje bazlarıyla hazırladığımız tırnaklar ortalama 3 ila 4 hafta boyunca ilk günkü parlaklığını ve tasarım netliğini kaybetmeden güvenle kullanılabilir.
+                    </div>
+                </div>
+
+                <!-- Soru 2 -->
+                <div class="bg-white rounded-none border border-stone-200/60 overflow-hidden premium-transition">
+                    <button onclick="toggleFaq(2)" class="w-full text-left px-8 py-5 flex items-center justify-between text-brand-dark font-medium text-sm sm:text-base focus:outline-none">
+                        <span>Aletler ve stüdyonuz steril mi?</span>
+                        <i id="faq-icon-2" class="fa-solid fa-plus text-brand-purple transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-2" class="hidden px-8 pb-5 text-stone-500 text-sm leading-relaxed border-t border-stone-100 pt-4 font-light">
+                        Sağlığınız bizim en hassas olduğumuz konudur. Tüm metal araçlarımız tıbbi otoklav cihazlarında cerrahi düzeyde sterilize edilmekte ve her müşteri için tek kullanımlık kapalı hijyenik paketler açılmaktadır.
+                    </div>
+                </div>
+
+                <!-- Soru 3 -->
+                <div class="bg-white rounded-none border border-stone-200/60 overflow-hidden premium-transition">
+                    <button onclick="toggleFaq(3)" class="w-full text-left px-8 py-5 flex items-center justify-between text-brand-dark font-medium text-sm sm:text-base focus:outline-none">
+                        <span>Protez tırnak kendi doğal tırnağıma zarar verir mi?</span>
+                        <i id="faq-icon-3" class="fa-solid fa-plus text-brand-purple transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-3" class="hidden px-8 pb-5 text-stone-500 text-sm leading-relaxed border-t border-stone-100 pt-4 font-light">
+                        Protez tırnak uygulaması doğru teknikle uygulandığında ve profesyonel cihazlarla yıpratılmadan söküldüğünde doğal tırnağınıza hiçbir zarar vermez. Evde kendi başınıza koparmadığınız sürece tırnağınız sağlıklı kalmaya devam eder.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. İLETİŞİM & FOOTER -->
+    <footer id="iletisim" class="bg-brand-dark text-stone-400 pt-24 pb-10 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-stone-800/80">
+                
+                <!-- Contact Details -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="font-serif text-3xl tracking-widest text-white font-bold block">
+                        NAIL<span class="text-brand-purple font-light italic">Art</span>
+                    </span>
+                    <p class="text-sm text-stone-500 leading-relaxed max-w-sm font-light">
+                        Tarzınızı parmak uçlarınıza taşımak, steril, sakin ve tamamen lüks bir deneyim yaşamak için sizleri stüdyomuza bekliyoruz.
+                    </p>
+                    
+                    <div class="space-y-4 pt-2 font-light text-sm">
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-location-dot text-brand-blue text-base mt-1"></i>
+                            <p>Moda Caddesi, No:123 Daire:4, Kadıköy / İstanbul</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-phone text-brand-blue"></i>
+                            <p>+90 (216) 123 45 67</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-envelope text-brand-blue"></i>
+                            <p>hello@luxenailart.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Direct WhatsApp Booking (Bouncing animasyonu sildim, elit bir hover ekledim) -->
+                    <div class="pt-4">
+                        <a href="https://wa.me/905551234567" target="_blank" class="inline-flex items-center space-x-3 bg-stone-800 hover:bg-brand-purple text-white px-6 py-3.5 rounded-none text-xs font-bold uppercase tracking-wider premium-transition border border-stone-700/50">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>WhatsApp Randevu Hattı</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Maps (Mock Frame in Premium Style) -->
+                <div class="lg:col-span-7 space-y-4">
+                    <h3 class="font-serif text-lg text-white">Stüdyo Konumumuz</h3>
+                    <div class="rounded-none overflow-hidden h-72 border border-stone-800/80 relative bg-stone-950">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.6504285880087!2d29.02672727670732!3d40.98914697135313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab87cd314cb83%3A0x9d0319ca70cfb5b5!2sModa%20Cd.%2C%20Kad%C4%B1k%C3%B6y%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1715000000000!5m2!1str!2str" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; filter: grayscale(1) invert(0.9) contrast(1.2) opacity(0.85);" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Copy -->
+            <div class="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-stone-600 space-y-4 md:space-y-0 tracking-wider uppercase font-semibold">
+                <p>&copy; 2026 Luxe Nail Art Studio. Tüm Hakları Saklıdır.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-brand-purple premium-transition"><i class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="#" class="hover:text-brand-purple premium-transition"><i class="fa-brands fa-facebook text-lg"></i></a>
+                    <a href="#" class="hover:text-brand-purple premium-transition"><i class="fa-brands fa-pinterest text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- 9. ETKİLEŞİMLİ MODAL (GALERİ BÜYÜTME & KAYDIRMA) -->
+    <div id="gallery-modal" class="hidden fixed inset-0 z-50 bg-brand-dark/95 backdrop-blur-md flex flex-col items-center justify-center p-4">
+        <!-- Close Button -->
+        <button onclick="closeGalleryModal()" class="absolute top-6 right-6 text-white hover:text-brand-purple premium-transition text-3xl focus:outline-none z-10">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- Main Modal Slide Wrapper -->
+        <div class="relative w-full max-w-3xl flex items-center justify-between">
+            <!-- Left Arrow Button -->
+            <button onclick="prevImage()" class="text-white hover:text-brand-blue premium-transition text-3xl sm:text-4xl p-4 focus:outline-none z-10" aria-label="Önceki Görsel">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <!-- Slide Image Container -->
+            <div class="w-full max-h-[75vh] flex justify-center items-center overflow-hidden px-4">
+                <img id="modal-img" src="img/1.jpg" alt="Detaylı Görünüm" class="max-w-full max-h-[75vh] object-contain rounded-none shadow-2xl transition-all duration-300">
+            </div>
+
+            <!-- Right Arrow Button -->
+            <button onclick="nextImage()" class="text-white hover:text-brand-blue premium-transition text-3xl sm:text-4xl p-4 focus:outline-none z-10" aria-label="Sonraki Görsel">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Image Indicator -->
+        <div class="mt-6 text-stone-500 text-xs tracking-widest uppercase">
+            Görsel: <span id="modal-idx-text" class="text-white font-bold">1</span> / 8
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT: TÜM ETKİLEŞİM VE ANİMASYONLAR -->
+    <!-- ========================================== -->
+    <script>
+        // --- 1. MOBİL MENÜ TETİKLEYİCİ ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars-staggered text-2xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-2xl';
+            }
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars-staggered text-2xl';
+            });
+        });
+
+
+        // --- 2. SIKÇA SORULAN SORULAR (FAQ) AKORDİYON SİSTEMİ ---
+        function toggleFaq(index) {
+            const content = document.getElementById(`faq-content-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.className = 'fa-solid fa-minus text-brand-purple transition-transform duration-300';
+            } else {
+                content.classList.add('hidden');
+                icon.className = 'fa-solid fa-plus text-brand-purple transition-transform duration-300';
+            }
+        }
+
+
+        // --- 3. KAYDIRILABİLİR ETKİLEŞİMLİ MODAL GALERİ ---
+        const galleryImages = [
+            "img/16.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/5.jpg", 
+            "img/6.jpg", "img/15.jpg", "img/8.jpg","img/9.jpg","img/10.jpg","img/11.jpg","img/12.jpg"
+        ];
+        let currentImgIndex = 0;
+
+        const galleryModal = document.getElementById('gallery-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalIdxText = document.getElementById('modal-idx-text');
+
+        function openGalleryModal(index) {
+            currentImgIndex = index;
+            updateModalContent();
+            galleryModal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeGalleryModal() {
+            galleryModal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function nextImage() {
+            currentImgIndex = (currentImgIndex + 1) % galleryImages.length;
+            updateModalContent();
+        }
+
+        function prevImage() {
+            currentImgIndex = (currentImgIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateModalContent();
+        }
+
+        function updateModalContent() {
+            modalImg.style.opacity = '0.3';
+            setTimeout(() => {
+                modalImg.src = galleryImages[currentImgIndex];
+                modalIdxText.innerText = currentImgIndex + 1;
+                modalImg.style.opacity = '1';
+            }, 100);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!galleryModal.classList.contains('hidden')) {
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'Escape') closeGalleryModal();
+            }
+        });
+
+
+        // --- 4. RANDEVU FORMU GÖNDERME SİMÜLASYONU ---
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Harika! Randevu talebiniz başarıyla alındı. Ekibimiz en kısa sürede sizinle iletişime geçecektir.');
+            document.getElementById('appointment-form').reset();
+        }
+    </script>
+</body>
+</html>
